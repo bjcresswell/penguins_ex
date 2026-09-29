@@ -1,0 +1,19 @@
+---
+title: "Penguins dataset exploration"
+format: html
+editor: visual
+---
+
+# Load packages
+```{r}
+library(tidyverse)
+```
+
+# Load penguin dataset
+```{r}
+getwd()
+penguins <- read_csv(here::here("data/penguins.csv"))
+```
+
+
+
