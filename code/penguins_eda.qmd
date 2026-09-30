@@ -28,13 +28,13 @@ penguins <- penguins |>
          sex = as_factor(sex))
 ```
 
-# Check distribution of males to females
+# Check distribution of males to females via plot
 ```{r}
 penguins |> 
   group_by(species, sex, island) |> 
-  summarise(total_count
-
-
+  summarise(total_count = n()) |> 
+  ggplot(aes(x = species, y = total_count, fill = sex)) +
+  geom_col(position = "dodge") 
 ```
 
 
