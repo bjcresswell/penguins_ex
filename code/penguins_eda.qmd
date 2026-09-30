@@ -14,6 +14,33 @@ library(tidyverse)
 getwd()
 penguins <- read_csv(here::here("data/penguins.csv"))
 ```
+# Initial investigations
+```{r}
+head(penguins)
+str(penguins)
+```
+
+# Convert chr vars to fcts
+```{r}
+penguins <- penguins |> 
+  mutate(species = as_factor(species),
+         island = as_factor(island),
+         sex = as_factor(sex))
+```
+
+# Check distribution of males to females
+```{r}
+penguins |> 
+  group_by(species, sex, island) |> 
+  summarise(total_count
+
+
+```
+
+
+
+
+
 
 
 
