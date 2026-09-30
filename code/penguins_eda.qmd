@@ -1,7 +1,30 @@
 ---
 title: "Penguins dataset exploration"
-format: html
-editor: visual
+author: "Ben Cresswell"              # Author name
+date: today                           # Automatically uses today's date
+date-format: "DD/MM/YYYY"             # British/Australian date format
+
+# Output Config
+format: 
+  # HTML Output
+  html:
+    theme: cosmo          # Modern Bootstrap theme with clean typography
+    highlight-style: a11y # High-contrast syntax highlighting for code
+    toc: true             # Includes a Table of Contents
+    toc-depth: 3          # Captures down to sub-subsections (e.g., 3.1.1)
+    toc-location: left    # Pins TOC to left sidebar so it doesn't block main page
+    toc-title: "Contents" # Custom title for the TOC sidebar
+    number-sections: true # Numbers sections automatically (e.g., 1, 1.1, 2)
+    code-fold: true       # Collapses code blocks by default under a dropdown
+    code-summary: "Show code" # Label text on collapsed code blocks
+    code-tools: true      # Adds global code menu (Show/Hide All Code) at top right
+    code-copy: true       # Adds a one-click copy button to code blocks
+    embed-resources: true # Bundles images/CSS into a single stand-alone HTML file
+    df-print: paged       # Formats data frames into interactive paged tables
+    fig-height: 5         # Default plot height in inches
+    fig-width: 8          # Default plot width in inches
+    #fig-responsive: true # Scales figures smoothly across screen sizes
+    smooth-scroll: true   # Enables smooth scrolling when clicking TOC links
 ---
 
 # Load packages
@@ -34,9 +57,24 @@ penguins |>
   group_by(species, sex, island) |> 
   summarise(total_count = n()) |> 
   ggplot(aes(x = species, y = total_count, fill = sex)) +
-  geom_col(position = "dodge") 
+  geom_col(position = "dodge") +
+  theme_classic() +
+  labs(x = "Species",
+       y = "Total count")
 ```
 
+# Check relationship of body mass to flipper length via scatter plot
+Check by species
+```{r}
+#| fig-cap: "Scatter plot of body mass vs flipper length by species"
+penguins |> 
+  ggplot(aes(x = body_mass_g, y = flipper_length_mm, group = species)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = TRUE) +
+  theme_classic() +
+  labs(x = "Body mass (g)",
+       y = "Flipper length (mm)")
+```
 
 
 
