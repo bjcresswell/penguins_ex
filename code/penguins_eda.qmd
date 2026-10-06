@@ -29,6 +29,7 @@ format:
 
 # Load packages
 ```{r}
+#| include: false
 library(tidyverse)
 ```
 
@@ -67,15 +68,20 @@ penguins |>
 Check by species
 ```{r}
 #| fig-cap: "Scatter plot of body mass vs flipper length by species"
+
+penguins_scatter <- 
 penguins |> 
   ggplot(aes(x = body_mass_g, y = flipper_length_mm, group = species)) +
-  geom_point() +
+  geom_point(size = 0.5) +
   geom_smooth(method = "lm", se = TRUE) +
   theme_classic() +
   labs(x = "Body mass (g)",
        y = "Flipper length (mm)")
 ```
 
+```{r}
+ggsave(penguins_scatter, filename = here::here("output/penguins_scatter.png"), width = 4, height = 2.5)
+```
 
 
 
