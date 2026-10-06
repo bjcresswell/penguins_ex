@@ -1,9 +1,15 @@
+# Files to ignore
 .Rproj.user
 .Rhistory
 .RData
 .Ruserdata
+.DS_Store
 
+# Extensions to ignore
 
 *.Rproj
-.DS_Store
 *html
+
+
+*scratch*
+*keyword*

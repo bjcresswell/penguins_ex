@@ -25,11 +25,25 @@ format:
     fig-width: 8          # Default plot width in inches
     #fig-responsive: true # Scales figures smoothly across screen sizes
     smooth-scroll: true   # Enables smooth scrolling when clicking TOC links
+    
+# Code Execution Defaults across all chunks
+execute:
+  echo: true              # Display source code alongside outputs
+  eval: true              # Execute the code in the chunk
+  include: true           # Include the chunk in the final rendered document
+  warning: false          # Suppress warning messages in final rendered document
+  message: false          # Suppress package/function load messages in rendered output
+  knitr:
+    opts_chunk: 
+      comment: "#>"       # Clean output prefix for console printed output
+      dev: "cairo_pdf"    # Uses high-quality Cairo device for crisp vector graphics in PDF
+
 ---
 
 # Load packages
 ```{r}
 #| include: false
+#| echo: false
 library(tidyverse)
 ```
 
